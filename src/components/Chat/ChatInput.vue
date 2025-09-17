@@ -157,78 +157,105 @@ const submitMessage = () => {
 .chat-input-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 16px 14px 10px 14px;
-  border: 1.5px solid #e0e0e0;
-  border-radius: 12px;
-  background: #f8fafc;
-  box-shadow: 0 2px 8px rgba(52,152,219,0.07);
+  gap: 15px;
+  padding: 20px;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .input-area {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
 }
 
 .message-input {
   flex-grow: 1;
-  padding: 12px;
-  border: 1.5px solid #d6eaff;
-  border-radius: 7px;
+  padding: 14px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
   font-size: 1em;
-  background: #fff;
-  transition: border-color 0.2s;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-input);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
 }
+
 .message-input:focus {
-  border-color: #3498db;
+  border-color: var(--text-accent);
   outline: none;
+  background: var(--bg-secondary);
+  box-shadow: 0 0 0 3px var(--border-hover);
+  transform: translateY(-1px);
+}
+
+.message-input::placeholder {
+  color: #95a5a6;
+  font-weight: 400;
 }
 
 .send-button {
-  padding: 11px 18px;
-  background-color: #27ae60;
+  padding: 14px 20px;
+  background: var(--button-primary);
   color: white;
   border: none;
-  border-radius: 7px;
+  border-radius: 12px;
   cursor: pointer;
   font-size: 1em;
   font-weight: 600;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-light);
 }
+
 .send-button:hover {
-  background-color: #219150;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
 }
 
 .voice-button {
-  padding: 10px;
-  background-color: #eaf2fb;
-  border: 1.5px solid #d6eaff;
-  border-radius: 7px;
+  padding: 12px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(5px);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s, border-color 0.2s;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
 }
+
 .voice-button:hover {
-  background-color: #d6eaff;
+  background: rgba(255, 255, 255, 1);
+  border-color: var(--text-accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(13, 71, 161, 0.1);
 }
+
 .voice-button.active {
-  background-color: #4CAF50;
+  background: linear-gradient(135deg, #388e3c, #2e7d32);
   color: white;
-  border-color: #4CAF50;
+  border-color: #388e3c;
+  box-shadow: 0 4px 15px rgba(56, 142, 60, 0.2);
 }
 
 .speech-feedback {
   margin-top: 10px;
-  padding: 12px 10px 10px 10px;
-  background-color: #eaf2fb;
-  border-radius: 8px;
+  padding: 16px 12px 12px 12px;
+  background: rgba(227, 242, 253, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
   text-align: center;
   position: relative;
   min-height: 56px;
-  box-shadow: 0 1px 4px rgba(52,152,219,0.08);
+  box-shadow: 0 4px 15px rgba(13, 71, 161, 0.1);
+  border: 1px solid var(--border-color);
 }
 
 .pulse-ring {
@@ -238,7 +265,7 @@ const submitMessage = () => {
   transform: translateX(-50%);
   width: 32px;
   height: 32px;
-  border: 3px solid #4CAF50;
+  border: 3px solid #388e3c;
   border-radius: 50%;
   animation: pulse 1.5s infinite;
 }
@@ -246,8 +273,9 @@ const submitMessage = () => {
 .transcript-preview {
   margin-top: 5px;
   font-style: italic;
-  color: #217dbb;
+  color: var(--text-primary);
   font-size: 1em;
+  font-weight: 500;
 }
 
 @keyframes pulse {

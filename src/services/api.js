@@ -162,6 +162,11 @@ export default {
   getStats() {
     return apiClient.get('/stats');
   },
+  
+  // Réinitialisation de la base vectorielle FAISS
+  resetFaissDatabase() {
+    return apiClient.post('/reset-faiss');
+  },
   // Dashboard Analyse sentiment
   getSentimentDashboard() {
     return apiClient.get('/dashboard/sentiment');

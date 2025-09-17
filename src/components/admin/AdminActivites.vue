@@ -257,9 +257,43 @@ const confirmDelete = async (id, type) => {
 
 <style scoped>
 .admin-page {
-  padding: 20px;
-  max-width: 1140px; /* Augmenté de 900px à 1140px, ajustez selon vos besoins */
-  margin: auto; /* Centrer la page */
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--bg-secondary);
+  background-image: url('@/assets/admin-background.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  box-shadow: var(--shadow-heavy);
+  border: 1px solid var(--border-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+.admin-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-glass);
+  border-radius: 24px;
+  z-index: 1;
+}
+
+.admin-page > * {
+  position: relative;
+  z-index: 2;
+}
+
+.admin-page h3 {
+  color: var(--text-primary);
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
 
 .modal-backdrop {
@@ -268,7 +302,8 @@ const confirmDelete = async (id, type) => {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Fond légèrement plus sombre */
+  background-color: rgba(13, 71, 161, 0.3);
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -276,12 +311,24 @@ const confirmDelete = async (id, type) => {
 }
 
 .modal-content {
-  background-color: white;
-  padding: 25px; /* Un peu plus de padding */
-  border-radius: 8px; /* Coins plus arrondis */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px);
+  padding: 35px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-heavy);
+  border: 1px solid var(--border-color);
   width: 90%;
-  max-width: 500px;
+  max-width: 550px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.modal-content h4 {
+  color: var(--text-primary);
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
 
 .modal-actions {
@@ -290,12 +337,15 @@ const confirmDelete = async (id, type) => {
 }
 
 .table {
-  margin-top: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Légère ombre pour le tableau */
-  border-radius: 8px; /* Coins arrondis */
-  overflow: hidden; /* Pour arrondir les coins du tableau */
+  margin-top: 25px;
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-light);
+  border-radius: 16px;
+  overflow: hidden;
   width: 100%;
-  font-size: 1.1rem; /* Taille de police légèrement plus grande */
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
 }
 
 .table th,
@@ -306,8 +356,12 @@ const confirmDelete = async (id, type) => {
 }
 
 .table th {
-  background-color: #f8f9fa;
-  font-weight: 600; /* Rendre les en-têtes un peu plus gras */
+  background: var(--table-header-bg);
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 0.95em;
+  letter-spacing: 0.3px;
+  border: none;
 }
 
 .btn {
@@ -316,36 +370,105 @@ const confirmDelete = async (id, type) => {
   gap: 0.5rem; /* Espace entre l'icône/spinner et le texte */
 }
 
-.btn-primary { background-color: #007bff; border-color: #007bff; }
-.btn-warning { color: #212529; background-color: #ffc107; border-color: #ffc107; }
-.btn-danger { background-color: #dc3545; border-color: #dc3545; }
-.btn-success { background-color: #28a745; border-color: #28a745; }
-.btn-secondary { background-color: #6c757d; border-color: #6c757d; }
+.btn {
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 10px 18px;
+  font-size: 0.9em;
+}
+
+.btn-primary {
+  background: var(--button-primary);
+  color: white;
+  box-shadow: var(--shadow-light);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-warning {
+  background: var(--button-secondary);
+  color: white;
+  box-shadow: var(--shadow-light);
+}
+
+.btn-warning:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #d32f2f, #b71c1c);
+  color: white;
+  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.2);
+}
+
+.btn-danger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.3);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #388e3c, #2e7d32);
+  color: white;
+  box-shadow: 0 4px 15px rgba(56, 142, 60, 0.2);
+}
+
+.btn-success:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(56, 142, 60, 0.3);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #757575, #616161);
+  color: white;
+  box-shadow: 0 4px 15px rgba(117, 117, 117, 0.2);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(117, 117, 117, 0.3);
+}
 
 .mb-3 { margin-bottom: 1rem !important; }
 .mt-3 { margin-top: 1rem !important; }
 .me-2 { margin-right: 0.5rem !important; }
 .ms-2 { margin-left: 0.5rem !important; }
 
-.form-label { margin-bottom: 0.5rem; font-weight: 500; } /* Label un peu plus en évidence */
+.form-label {
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 .form-control {
   display: block;
   width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  font-weight: 400;
+  padding: 14px 16px;
+  font-size: 1em;
+  font-weight: 500;
   line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  color: var(--text-secondary);
+  background: var(--bg-glass);
+  backdrop-filter: blur(5px);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
+
 .form-control:focus {
-  border-color: #86b7fe;
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+  border-color: var(--text-accent);
+  outline: none;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+  transform: translateY(-1px);
 }
 .form-control.is-invalid {
   border-color: #dc3545; /* Couleur de bordure pour erreur Bootstrap */

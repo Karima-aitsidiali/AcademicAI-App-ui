@@ -3,7 +3,7 @@
     <div class="change-password-header">
       <span class="change-password-icon">🔑</span>
       <h2>Changer le mot de passe</h2>
-      <p class="change-password-subtitle">Sécurisez votre accès à EduLLM</p>
+      <p class="change-password-subtitle">Sécurisez votre accès à AcademicAI</p>
     </div>
     <form @submit.prevent="handleChangePassword" class="change-password-form">
       <div class="form-group">
@@ -117,7 +117,7 @@ h2 {
 }
 
 .change-password-subtitle {
-  color: #7f8c8d;
+  color: var(--text-muted);
   font-size: 1em;
   margin-bottom: 0;
   font-style: italic;
@@ -138,7 +138,7 @@ h2 {
 
 .form-group label {
   margin-bottom: 6px;
-  color: #34495e;
+  color: var(--text-secondary);
   font-weight: 500;
   font-size: 1em;
   display: flex;
@@ -153,7 +153,7 @@ h2 {
   font-size: 1em;
   transition: border-color 0.2s;
   background: #f8fafc;
-  color: #34495e;
+  color: var(--text-secondary);
 }
 .form-group input:focus {
   border-color: #3498db;
@@ -164,7 +164,7 @@ h2 {
 button {
   padding: 12px 0;
   background-color: #f1c40f;
-  color: #34495e;
+  color: var(--text-secondary);
   border: none;
   border-radius: 6px;
   font-size: 1.1em;

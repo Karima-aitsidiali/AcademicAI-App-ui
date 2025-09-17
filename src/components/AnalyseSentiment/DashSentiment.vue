@@ -134,6 +134,7 @@ async function runAnalysis() {
 /* --- Conteneur principal --- */
 .sentiment-container {
   width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* --- Animation de chargement --- */
@@ -143,29 +144,46 @@ async function runAnalysis() {
   justify-content: center;
   align-items: center;
   min-height: 60vh;
-  gap: 1rem;
+  gap: 1.5rem;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
 }
 .spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #74a3c3;
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(25, 118, 210, 0.1);
+  border-left-color: var(--text-accent);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-.loading-container p { font-size: 1.2rem; color: #555; }
+.loading-container p { 
+  font-size: 1.2rem; 
+  color: var(--text-primary); 
+  font-weight: 600;
+  margin: 0;
+}
 
 /* --- Conteneur d'erreur --- */
 .error-container {
-  background-color: #ffebee;
-  color: #c62828;
-  border: 1px solid #c62828;
-  border-radius: 12px;
-  padding: 2rem;
+  background: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid #D84315;
+  border-radius: 20px;
+  padding: 35px 30px;
   text-align: center;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 30px rgba(216, 67, 21, 0.1);
 }
-.error-container h3 { margin-top: 0; }
+.error-container h3 { 
+  margin-top: 0; 
+  font-size: 1.4em;
+  font-weight: 700;
+}
 
 /* --- État initial et bouton de lancement --- */
 .initial-state-container {
@@ -174,76 +192,165 @@ async function runAnalysis() {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 4rem 2rem;
-  background-color: #f8f9fa;
-  border-radius: 12px;
+  padding: 50px 30px;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
   min-height: 50vh;
+  box-shadow: var(--shadow-heavy);
+  border: 1px solid var(--border-color);
 }
-.initial-state-container h2 { font-size: 1.8rem; color: #333; margin-bottom: 0.5rem; }
-.initial-state-container p { font-size: 1.1rem; color: #666; max-width: 500px; margin-bottom: 2rem; }
+.initial-state-container h2 { 
+  font-size: 2rem; 
+  color: var(--text-primary); 
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.initial-state-container p { 
+  font-size: 1.1rem; 
+  color: var(--text-secondary); 
+  max-width: 500px; 
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
 .launch-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px;
+  padding: 16px 28px;
   font-size: 1.1rem;
   font-weight: 600;
   color: white;
-  background: linear-gradient(90deg, #75a4c4 0%, #5a8eaf 100%);
+  background: var(--button-primary);
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-light);
+  letter-spacing: 0.5px;
 }
-.launch-button .icon { margin-right: 10px; font-size: 1.4rem; }
-.launch-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); }
-.retry-button { margin-top: 1rem; background: #ffc107; color: #333; }
+.launch-button .icon { 
+  margin-right: 10px; 
+  font-size: 1.4rem; 
+}
+.launch-button:hover { 
+  transform: translateY(-1px); 
+  box-shadow: var(--shadow-medium); 
+}
+.retry-button { 
+  margin-top: 1.5rem; 
+  background: var(--button-secondary);
+  color: white;
+}
 
 /* --- Grille et Cartes --- */
 .grid-container {
   display: grid;
-  /* AJUSTEMENT 2 : Largeur minimale des cartes augmentée */
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
 }
 .kpi-card, .chart-card, .table-card {
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 25px 20px;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
 }
-.kpi-card:hover, .chart-card:hover, .table-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
+.kpi-card:hover, .chart-card:hover, .table-card:hover { 
+  transform: translateY(-2px); 
+  box-shadow: var(--shadow-medium);
+  border-color: var(--border-hover);
+}
 
 /* --- Cartes KPI --- */
-.kpi-card { display: flex; flex-direction: column; }
-.kpi-header h3 { font-size: 1.1rem; color: #333; margin: 0 0 0.5rem 0; }
-.kpi-value { font-size: 2.8rem; font-weight: 700; color: #74a3c3; margin: auto 0 0 0; }
-.kpi-card.positive .kpi-value { color: #2ecc71; }
+.kpi-card { 
+  display: flex; 
+  flex-direction: column; 
+}
+.kpi-header h3 { 
+  font-size: 1.1rem; 
+  color: var(--text-primary); 
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+}
+.kpi-value { 
+  font-size: 2.8rem; 
+  font-weight: 700; 
+  color: var(--text-accent); 
+  margin: auto 0 0 0;
+}
+.kpi-card.positive .kpi-value { 
+  background: var(--button-success);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 /* --- Cartes Graphiques et Tableaux --- */
-.chart-card, .table-card { grid-column: span 1; }
+.chart-card, .table-card { 
+  grid-column: span 1; 
+}
 @media (min-width: 992px) {
   .large-card { grid-column: span 1; }
   .table-card { grid-column: span 1; }
 }
-.chart-card h3, .table-card h3 { margin-top: 0; margin-bottom: 1.5rem; color: #333; }
+.chart-card h3, .table-card h3 { 
+  margin-top: 0; 
+  margin-bottom: 1.5rem; 
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.3em;
+}
 
 /* --- Wrapper pour les graphiques --- */
 .chart-wrapper {
   position: relative;
-  /* AJUSTEMENT 1 : Hauteur des graphiques réduite */
   height: 320px;
   width: 100%;
+  background: var(--bg-glass);
+  border-radius: 12px;
+  padding: 10px;
 }
 
 /* --- Style du Tableau --- */
-.table-wrapper { width: 100%; overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; text-align: left; }
-th, td { padding: 12px 15px; border-bottom: 1px solid #e0e0e0; }
-thead tr { background-color: #f4f7f9; }
-th { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: #555; }
-tbody tr:nth-child(even) { background-color: #f9fafb; }
-tbody tr:hover { background-color: #f0f4f8; }
+.table-wrapper { 
+  width: 100%; 
+  overflow-x: auto;
+  background: var(--bg-glass);
+  border-radius: 12px;
+}
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  text-align: left; 
+}
+th, td { 
+  padding: 14px 16px; 
+  border-bottom: 1px solid var(--border-color);
+}
+thead tr { 
+  background: var(--table-header-bg);
+}
+th { 
+  font-size: 0.9rem; 
+  font-weight: 700; 
+  text-transform: uppercase; 
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+tbody tr:nth-child(even) { 
+  background: var(--table-row-even);
+}
+tbody tr:hover { 
+  background: var(--bg-hover);
+  transform: scale(1.02);
+  transition: all 0.2s ease;
+}
+td {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
 </style>

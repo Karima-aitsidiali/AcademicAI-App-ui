@@ -77,22 +77,25 @@ watch(
 <style scoped>
 .chat-window {
   flex-grow: 1;
-  border: 2px solid #b3d8fd;
   padding: 24px 20px 18px 20px;
   width: 100%;
   height: 440px;
-  background: linear-gradient(120deg, #f8fafc 80%, #eaf2fb 100%);
-  border-radius: 18px;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
   margin-bottom: 18px;
-  box-shadow: 0 8px 32px rgba(52,152,219,0.13), 0 1.5px 0 #b3d8fd inset;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
   scroll-behavior: smooth;
-  transition: box-shadow 0.2s, border-color 0.2s;
+  transition: all 0.3s ease;
   overflow-y: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .chat-window:hover {
-  box-shadow: 0 16px 48px rgba(52,152,219,0.18), 0 1.5px 0 #217dbb inset;
-  border-color: #217dbb;
+  box-shadow: var(--shadow-medium);
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 800px) {
@@ -106,12 +109,14 @@ watch(
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 14px 20px;
-  background-color: #eaf2fb;
+  padding: 16px 22px;
+  background: rgba(227, 242, 253, 0.6);
+  backdrop-filter: blur(10px);
   border-radius: 18px;
   width: fit-content;
   margin: 12px 0;
-  box-shadow: 0 1px 4px rgba(52, 152, 219, 0.08);
+  box-shadow: 0 4px 15px rgba(13, 71, 161, 0.1);
+  border: 1px solid rgba(13, 71, 161, 0.05);
 }
 .typing-animation {
   display: flex;
@@ -121,7 +126,7 @@ watch(
 .typing-dot {
   width: 10px;
   height: 10px;
-  background-color: #217dbb;
+  background: var(--button-primary);
   border-radius: 50%;
   margin: 0 3px;
   animation: typingAnimation 1.4s infinite ease-in-out;
@@ -149,7 +154,7 @@ watch(
 }
 .loading-indicator p {
   margin: 0;
-  color: #217dbb;
+  color: var(--text-primary);
   font-size: 1em;
   font-style: italic;
   font-weight: 500;

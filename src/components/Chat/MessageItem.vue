@@ -211,7 +211,53 @@ const formattedText = computed(() => {
 /* Séparateurs */
 .message-text hr {
   border: none;
-  border-top: 1.5px solid #b3d8fd;
-  margin: 1em 0;
+  border-top: 1px solid rgba(25, 118, 210, 0.2);
+  margin: 1.2em 0;
+}
+
+/* Timestamp */
+.message-timestamp {
+  align-self: flex-end;
+  font-size: 0.75em;
+  color: var(--text-muted);
+  margin-top: 10px;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+/* Section ressources */
+.resources-section {
+  margin-top: 15px;
+  padding: 12px 16px;
+  background: var(--table-row-even);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.resources-section h4 {
+  color: var(--text-primary);
+  font-size: 0.95em;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.resources-section ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.resources-section li {
+  margin-bottom: 0.3em;
+}
+
+.resources-section a {
+  color: var(--text-accent);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.resources-section a:hover {
+  text-decoration: underline;
+  color: var(--text-primary);
 }
 </style>

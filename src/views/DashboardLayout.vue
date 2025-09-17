@@ -18,8 +18,8 @@ import Navbar from '@/components/Common/Navbar.vue';
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* Background image sur le layout principal */
-  background-image: url('public/Img.png');
+  /* Background éducatif avec pattern géométrique subtil */
+  background: var(--bg-primary);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -28,9 +28,10 @@ import Navbar from '@/components/Common/Navbar.vue';
 .background-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.7); /* Blanc semi-transparent, ajuste l’opacité ici */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(3px);
   z-index: 0;
-  pointer-events: none; /* Pour ne pas gêner les interactions */
+  pointer-events: none;
 }
 
 .main-content {

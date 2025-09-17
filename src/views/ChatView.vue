@@ -69,20 +69,33 @@ async function handleFeedback(feedbackText) {
 
 <style scoped>
 .chat-view-container {
-  padding: 10px;
+  padding: 20px;
   max-width: 1400px;
   overflow: hidden;
   margin: 0 auto;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
-  color: #333;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  box-shadow: var(--shadow-heavy);
+  border: 1px solid var(--border-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-secondary);
 }
 .chat-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(25, 118, 210, 0.2);
+  margin-bottom: 20px;
+}
+
+.chat-header h3 {
+  color: var(--text-primary);
+  font-size: 1.8em;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.5px;
 }
 .chat-layout {
   display: flex;
@@ -95,19 +108,29 @@ async function handleFeedback(feedbackText) {
   flex-direction: column;
 }
 .error-message {
-  color: #d32f2f;
-  margin-top: 10px;
-  background: #ffeaea;
-  border-radius: 4px;
-  padding: 6px 10px;
-  font-size: 1em;
+  color: var(--error-text);
+  margin-top: 15px;
+  background: var(--error-bg);
+  border: 1px solid #D84315;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.95em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .success-message {
-  color: #2ecc40;
-  margin-top: 10px;
-  background: #eaffea;
-  border-radius: 4px;
-  padding: 6px 10px;
-  font-size: 1em;
+  color: var(--success-text);
+  margin-top: 15px;
+  background: var(--success-bg);
+  border: 1px solid #c3e6cb;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.95em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 </style>

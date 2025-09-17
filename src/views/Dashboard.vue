@@ -23,34 +23,43 @@ import DashSentiment from '@/components/AnalyseSentiment/DashSentiment.vue';
 
 <style scoped>
 .dashboard-page {
-  /* Un fond subtil pour toute la page */
-  background-color: #f8f9fa;
-  padding: 2rem 1rem; /* Plus de padding sur mobile */
-  min-height: calc(100vh - 100px); /* Prend toute la hauteur moins la navbar approx. */
+  background: transparent;
+  padding: 2rem 1rem;
+  min-height: calc(100vh - 100px);
 }
 
 .dashboard-container {
   max-width: 1600px;
   margin: 0 auto;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  box-shadow: var(--shadow-heavy);
+  border: 1px solid var(--border-color);
+  padding: 30px;
 }
 
 .dashboard-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid rgba(25, 118, 210, 0.2);
+  text-align: center;
 }
 
 .dashboard-header h1 {
   font-size: 2.2rem;
-  color: #212529;
+  color: var(--text-primary);
   font-weight: 700;
   margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
 }
 
 .dashboard-header p {
   font-size: 1.1rem;
-  color: #6c757d;
+  color: var(--text-muted);
   margin: 0;
+  font-style: italic;
+  font-weight: 500;
 }
 
 .dashboard-content {

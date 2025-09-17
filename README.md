@@ -1,6 +1,6 @@
-# EduLLMBot FrontEnd
+# AcademicAI FrontEnd
 
-Ce projet est une interface web développée avec Vue 3 et Vite pour le chatbot éducatif EduLLMBot.
+Ce projet est une interface web développée avec Vue 3 et Vite pour le chatbot éducatif AcademicAI.
 
 ## Prérequis
 - Node.js (version recommandée : >=16)

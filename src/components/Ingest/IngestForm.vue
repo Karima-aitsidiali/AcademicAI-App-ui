@@ -207,21 +207,24 @@ const submitIngestion = async () => {
 
 <style scoped>
 .ingest-form {
-  background: #fff;
-  padding: 32px 28px 24px 28px;
-  border-radius: 14px;
-  box-shadow: 0 8px 32px rgba(52,152,219,0.13);
-  max-width: 700px;
-  margin: 32px auto;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px);
+  padding: 35px 30px 28px 30px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-heavy);
+  border: 1px solid var(--border-color);
+  max-width: 750px;
+  margin: 35px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .form-title {
-  color: #217dbb;
-  font-size: 1.5em;
+  color: var(--text-primary);
+  font-size: 1.6em;
   font-weight: 700;
-  margin-bottom: 24px;
+  margin-bottom: 30px;
   text-align: center;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .form-grid {
@@ -237,33 +240,56 @@ const submitIngestion = async () => {
 }
 
 .form-group label {
-  margin-bottom: 8px;
-  font-weight: 500;
-  color: #217dbb;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .form-group input[type="text"],
 .form-group select {
-  padding: 10px;
-  border: 1.5px solid #d6eaff;
-  border-radius: 6px;
+  padding: 14px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
   font-size: 1em;
-  background: #f8fafc;
-  transition: border-color 0.2s;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-glass);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
 }
+
+.form-group input[type="text"]:focus,
+.form-group select:focus {
+  border-color: var(--text-accent);
+  outline: none;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+  transform: translateY(-1px);
+}
+
 .form-group input[type="text"]:disabled {
-  background-color: #e9ecef;
+  background: rgba(233, 236, 239, 0.6);
   opacity: 0.7;
   cursor: not-allowed;
+  transform: none;
 }
+
 .form-group select:disabled {
-  background-color: #e9ecef;
+  background: rgba(233, 236, 239, 0.6);
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .form-group small {
   font-size: 0.85em;
-  color: #666;
-  margin-top: 5px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  font-style: italic;
+  font-weight: 400;
 }
 
 .file-input-container {
@@ -274,57 +300,76 @@ const submitIngestion = async () => {
 
 .file-input-container input[type="text"] {
   flex-grow: 1;
+  height: auto;
 }
 
 .browse-button {
-  padding: 10px 15px;
-  background-color: #3498db;
+  padding: 10px 16px;
+  background: var(--button-secondary);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 600;
-  transition: background-color 0.2s;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.3em;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+  white-space: nowrap;
+  height: 46px;
+  flex-shrink: 0;
 }
+
 .browse-button:hover {
-  background-color: #217dbb;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.3);
 }
 
 .submit-button {
   display: block;
   width: 100%;
-  padding: 14px 0;
-  background-color: #27ae60;
+  padding: 16px 0;
+  background: var(--button-primary);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 1.15em;
+  font-size: 1.1em;
   font-weight: 700;
-  margin-top: 18px;
-  transition: background-color 0.3s;
+  margin-top: 25px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-light);
+  letter-spacing: 0.5px;
 }
+
 .submit-button:hover:not(:disabled) {
-  background-color: #219150;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
 }
+
 .submit-button:disabled {
-  background-color: #aaa;
+  background: var(--button-disabled);
   cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 4px 15px rgba(149, 165, 166, 0.2);
 }
 
 .error-message {
-  color: #c0392b;
-  background: #ffeaea;
-  border: 1px solid #f5c6cb;
-  margin-bottom: 15px;
+  color: var(--error-text);
+  background: var(--error-bg);
+  border: 1px solid #D84315;
+  margin-bottom: 20px;
   text-align: center;
-  padding: 10px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 1em;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 </style>

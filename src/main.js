@@ -3,10 +3,12 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import { createPinia } from 'pinia';
-import { useAuthStore } from '@/stores/auth'; // Importez le store d'authentification
+import { useAuthStore } from '@/stores/auth';
+import { useThemeStore } from '@/stores/theme';
 import CoreuiVue from '@coreui/vue'
 import CIcon from '@coreui/icons-vue'
 import '@coreui/coreui/dist/css/coreui.min.css'
+import '@/styles/themes.css'
 
 const app = createApp(App);
 const pinia = createPinia();
@@ -21,6 +23,10 @@ app.use(pinia); // Utilisez Pinia AVANT d'essayer d'utiliser un store
 // Créez une instance du store APRÈS que Pinia soit utilisé par l'app
 const authStore = useAuthStore();
 authStore.loadUserFromStorage(); // Chargez l'utilisateur depuis localStorage
+
+// Initialisez le thème
+const themeStore = useThemeStore();
+themeStore.initTheme();
 
 
 app.use(CoreuiVue)

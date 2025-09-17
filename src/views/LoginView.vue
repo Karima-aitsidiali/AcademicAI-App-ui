@@ -45,8 +45,8 @@ const activateInviteMode = async () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Background image */
-  background-image: url('public/Img.png');
+  /* Background gradient éducatif */
+  background: var(--navbar-bg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -56,7 +56,8 @@ const activateInviteMode = async () => {
 .background-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.7); /* Ajuste l’opacité selon le rendu souhaité */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
   z-index: 0;
   pointer-events: none;
 }
@@ -64,14 +65,15 @@ const activateInviteMode = async () => {
 .login-container {
   position: relative;
   z-index: 1;
-  max-width: 400px;
+  max-width: 450px;
   margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
+  padding: 30px;
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px);
   text-align: center;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-heavy);
 }
 h2 {
   margin-bottom: 20px;

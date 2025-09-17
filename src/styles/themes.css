@@ -1,0 +1,140 @@
+/* Variables globales pour les thèmes */
+
+/* Thème clair par défaut */
+:root {
+  /* Arrière-plans */
+  --bg-primary: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --bg-secondary: rgba(255, 255, 255, 0.95);
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --bg-glass: rgba(255, 255, 255, 0.8);
+  --bg-input: rgba(255, 255, 255, 0.8);
+  --bg-hover: rgba(25, 118, 210, 0.1);
+  
+  /* Textes */
+  --text-primary: #0D47A1;
+  --text-secondary: #34495e;
+  --text-accent: #1976D2;
+  --text-muted: #7f8c8d;
+  
+  /* Bordures et ombres */
+  --border-color: rgba(13, 71, 161, 0.1);
+  --border-hover: rgba(25, 118, 210, 0.2);
+  --shadow-light: 0 10px 30px rgba(13, 71, 161, 0.1);
+  --shadow-medium: 0 15px 40px rgba(13, 71, 161, 0.15);
+  --shadow-heavy: 0 20px 60px rgba(13, 71, 161, 0.15);
+  
+  /* Boutons */
+  --button-primary: linear-gradient(135deg, #1976D2, #0D47A1);
+  --button-secondary: linear-gradient(135deg, #FFC107, #FF8F00);
+  --button-success: linear-gradient(135deg, #4CAF50, #388E3C);
+  --button-danger: linear-gradient(135deg, #e74c3c, #c0392b);
+  --button-disabled: linear-gradient(135deg, #bdc3c7, #95a5a6);
+  
+  /* Messages */
+  --success-bg: linear-gradient(135deg, #d1edcc, #c3e6cb);
+  --success-text: #155724;
+  --error-bg: linear-gradient(135deg, #ffebee, #ffc1cc);
+  --error-text: #D84315;
+  --warning-bg: linear-gradient(135deg, #fff3cd, #ffeaa7);
+  --warning-text: #856404;
+  
+  /* Navbar */
+  --navbar-bg: linear-gradient(135deg, #e3f2fd 0%, #e1f5fe 100%);
+  --navbar-text: #0D47A1;
+  
+  /* Tableaux */
+  --table-header-bg: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  --table-row-even: rgba(227, 242, 253, 0.3);
+  --table-row-hover: rgba(25, 118, 210, 0.1);
+}
+
+/* Thème sombre */
+:root.dark {
+  /* Arrière-plans */
+  --bg-primary: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
+  --bg-secondary: rgba(45, 55, 72, 0.95);
+  --bg-card: rgba(45, 55, 72, 0.95);
+  --bg-glass: rgba(45, 55, 72, 0.8);
+  --bg-input: rgba(74, 85, 104, 0.8);
+  --bg-hover: rgba(144, 205, 244, 0.1);
+  
+  /* Textes */
+  --text-primary: #f7fafc;
+  --text-secondary: #e2e8f0;
+  --text-accent: #90cdf4;
+  --text-muted: #a0aec0;
+  
+  /* Bordures et ombres */
+  --border-color: rgba(113, 128, 150, 0.2);
+  --border-hover: rgba(144, 205, 244, 0.3);
+  --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.4);
+  --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.5);
+  
+  /* Boutons */
+  --button-primary: linear-gradient(135deg, #4299e1, #2b77c7);
+  --button-secondary: linear-gradient(135deg, #ed8936, #dd6b20);
+  --button-success: linear-gradient(135deg, #48bb78, #38a169);
+  --button-danger: linear-gradient(135deg, #f56565, #e53e3e);
+  --button-disabled: linear-gradient(135deg, #4a5568, #2d3748);
+  
+  /* Messages */
+  --success-bg: linear-gradient(135deg, #2f855a, #276749);
+  --success-text: #9ae6b4;
+  --error-bg: linear-gradient(135deg, #c53030, #9b2c2c);
+  --error-text: #feb2b2;
+  --warning-bg: linear-gradient(135deg, #d69e2e, #b7791f);
+  --warning-text: #faf089;
+  
+  /* Navbar */
+  --navbar-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+  --navbar-text: #f7fafc;
+  
+  /* Tableaux */
+  --table-header-bg: linear-gradient(135deg, #4a5568, #2d3748);
+  --table-row-even: rgba(113, 128, 150, 0.1);
+  --table-row-hover: rgba(144, 205, 244, 0.1);
+}
+
+/* Transition fluide entre les thèmes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Classes utilitaires pour les thèmes */
+.theme-bg-primary { background: var(--bg-primary); }
+.theme-bg-secondary { background: var(--bg-secondary); }
+.theme-bg-card { background: var(--bg-card); }
+.theme-bg-glass { background: var(--bg-glass); }
+
+.theme-text-primary { color: var(--text-primary); }
+.theme-text-secondary { color: var(--text-secondary); }
+.theme-text-accent { color: var(--text-accent); }
+.theme-text-muted { color: var(--text-muted); }
+
+.theme-border { border-color: var(--border-color); }
+.theme-shadow-light { box-shadow: var(--shadow-light); }
+.theme-shadow-medium { box-shadow: var(--shadow-medium); }
+.theme-shadow-heavy { box-shadow: var(--shadow-heavy); }
+
+/* Styles spécifiques pour certains éléments qui ont besoin d'adaptation */
+.dark .navbar-logo-svg {
+  background: rgba(74, 85, 104, 0.9) !important;
+}
+
+.dark .navbar-slogan {
+  color: #a0aec0 !important;
+}
+
+.dark .brand-name {
+  color: var(--text-primary) !important;
+}
+
+.dark .theme-toggle {
+  background: rgba(74, 85, 104, 0.8) !important;
+  color: var(--text-accent) !important;
+}
+
+.dark .theme-toggle:hover {
+  background: rgba(113, 128, 150, 0.9) !important;
+}

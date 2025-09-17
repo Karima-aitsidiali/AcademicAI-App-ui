@@ -229,130 +229,174 @@ const moduleChartData = computed(() => {
 </script>
 
 <style scoped>
-/* Vos styles existants sont bons.
-   La grille .charts-grid s'adaptera automatiquement pour afficher plus de graphiques.
-   Vous pourriez vouloir ajuster minmax dans grid-template-columns si vous avez beaucoup de graphiques
-   ou si vous voulez qu'ils soient plus petits.
-   Exemple: grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-*/
-
 .stats-view-container {
-  padding: 20px;
-  max-width: 1200px;
+  padding: 30px;
+  max-width: 1400px;
   margin: auto;
+  background: var(--bg-primary);
+  min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 h2 {
   text-align: center;
-  margin-bottom: 30px;
-  color: #2c3e50;
-  font-size: 2em;
+  margin-bottom: 40px;
+  color: var(--text-primary);
+  font-size: 2.2em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 10px var(--shadow-light);
 }
+
 .refresh-button {
   display: block;
-  margin: 0 auto 30px auto;
-  padding: 12px 20px;
-  background-color: #3498db;
+  margin: 0 auto 35px auto;
+  padding: 16px 28px;
+  background: var(--button-primary);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-  font-size: 1em;
+  transition: all 0.3s ease;
+  font-size: 1.1em;
+  font-weight: 600;
+  box-shadow: var(--shadow-light);
+  letter-spacing: 0.3px;
 }
-.refresh-button:hover {
-  background-color: #2980b9;
+
+.refresh-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
 }
+
 .refresh-button:disabled {
-  background-color: #bdc3c7;
+  background: var(--button-disabled);
   cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--shadow-light);
 }
 
 .loading-indicator, .no-stats {
   text-align: center;
-  padding: 30px;
+  padding: 35px;
   font-size: 1.2em;
-  color: #7f8c8d;
+  color: var(--text-primary);
+  font-weight: 600;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
 }
+
 .error-message {
-  color: #c0392b;
-  background-color: #fdecea;
-  border: 1px solid #e74c3c;
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  color: var(--error-text);
+  background: var(--error-bg);
+  border: 1px solid var(--error-text);
+  padding: 18px 24px;
+  border-radius: 12px;
+  margin-bottom: 25px;
   text-align: center;
+  font-weight: 600;
+  backdrop-filter: blur(5px);
+  box-shadow: var(--shadow-light);
 }
 
 .stats-layout {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 35px;
 }
 
 .stats-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
 }
 
 .charts-grid {
   display: grid;
-  /* Ajustez minmax si vous avez beaucoup de graphiques ou si vous voulez qu'ils soient plus petits */
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
+  gap: 25px;
 }
 
 .stats-lists-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
 }
 
 .card {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  border: 1px solid #ecf0f1;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  padding: 25px 20px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
 }
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--border-hover);
+}
+
 .card h4 {
   margin-top: 0;
-  border-bottom: 1px solid #ecf0f1;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
-  font-size: 1.25em;
-  color: #34495e;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+  font-size: 1.3em;
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: 0.3px;
 }
 
 .stat-card {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  padding: 25px 20px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
   text-align: center;
-  border: 1px solid #ecf0f1;
+  transition: all 0.3s ease;
 }
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--border-hover);
+}
+
 .stat-card h3 {
   margin-top: 0;
-  font-size: 1.1em;
-  color: #34495e;
-  margin-bottom: 10px;
-}
-.stat-value {
-  font-size: 2.5em;
+  font-size: 1.2em;
+  color: var(--text-primary);
+  margin-bottom: 15px;
   font-weight: 600;
-  color: #3498db;
-  margin: 10px 0 0 0;
+  letter-spacing: 0.3px;
+}
+
+.stat-value {
+  font-size: 2.8em;
+  font-weight: 700;
+  background: var(--button-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 15px 0 0 0;
+  text-shadow: none;
 }
 
 .chart-container {
-  height: 400px;
+  height: 420px;
   position: relative;
-  padding: 20px 10px 10px 10px;
-  background: #f8fafc;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(52,152,219,0.07);
+  padding: 25px 15px 15px 15px;
+  background: var(--bg-glass);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
 }
 
 .chart-container canvas {
@@ -366,47 +410,87 @@ h2 {
 .stats-list {
   list-style-type: none;
   padding: 0;
-  max-height: 250px;
+  max-height: 280px;
   overflow-y: auto;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 10px;
 }
+
 .list-item {
-  padding: 10px 5px;
-  border-bottom: 1px solid #f7f9f9;
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.95em;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
+
 .list-item:last-child {
   border-bottom: none;
 }
-.count {
-  font-weight: 600;
-  background-color: #eaf2f8;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.9em;
-  color: #2c3e50;
+
+.list-item:hover {
+  background: var(--bg-hover);
+  border-radius: 8px;
+  transform: scale(1.02);
 }
 
-.card, .stat-card {
-  transition: box-shadow 0.2s;
+.count {
+  font-weight: 700;
+  background: var(--table-header-bg);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.9em;
+  box-shadow: var(--shadow-light);
 }
-.card:hover, .stat-card:hover {
-  box-shadow: 0 8px 24px rgba(52, 152, 219, 0.15);
-  border-color: #b2dffc;
+
+.stats-section {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 25px 20px;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
 }
-h2, h3, h4 {
-  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-  letter-spacing: 0.5px;
+
+.stats-section:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--border-hover);
 }
-.stat-value {
-  color: #1abc9c;
-  text-shadow: 0 2px 8px #e0f7fa;
-}
-.refresh-button {
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-weight: 600;
-  letter-spacing: 1px;
+
+@media (max-width: 768px) {
+  .stats-view-container {
+    padding: 20px;
+  }
+  
+  .stats-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+  }
+  
+  .charts-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .chart-container {
+    height: 350px;
+  }
+  
+  h2 {
+    font-size: 1.8em;
+  }
+  
+  .refresh-button {
+    padding: 12px 20px;
+    font-size: 1em;
+  }
 }
 </style>

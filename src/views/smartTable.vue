@@ -314,7 +314,7 @@ onMounted(() => {
 .controls {
   margin-bottom: 25px;
   padding: 15px;
-  background-color: #ffffff;
+  background-color: var(--bg-secondary)fff;
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   display: flex;
@@ -329,7 +329,7 @@ onMounted(() => {
   padding: 10px 12px;
   border-radius: 6px;
   border: 1px solid #d1d5db;
-  background-color: #fff;
+  background-color: var(--bg-secondary);
   font-size: 0.95em;
   min-width: 200px;
   transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -412,7 +412,7 @@ onMounted(() => {
   margin-top: 15px;
 }
 .pagination-button {
-  background-color: #fff;
+  background-color: var(--bg-secondary);
   border: 1px solid #d1d5db;
   color: #374151;
   padding: 8px 16px;

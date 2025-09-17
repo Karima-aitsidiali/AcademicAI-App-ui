@@ -163,64 +163,105 @@ export const useDataStore = defineStore('data', {
     async createDepartement(data) {
       const response = await api.addDepartement(data);
       await this.fetchAdminAllDepartements(true); // Recharger la liste admin
+      await this.fetchDepartementsForDropdown(); // IMPORTANT: Recharger aussi les dropdowns !
       return response.data;
     },
     async updateDepartement(id, data) {
       const response = await api.updateDepartement(id, data);
       await this.fetchAdminAllDepartements(true);
+      await this.fetchDepartementsForDropdown(); // IMPORTANT: Recharger aussi les dropdowns !
       return response.data;
     },
     async deleteDepartement(id) {
       await api.deleteDepartement(id);
       await this.fetchAdminAllDepartements(true);
+      await this.fetchDepartementsForDropdown(); // IMPORTANT: Recharger aussi les dropdowns !
+    },
+
+    // --- MÉTHODE POUR FORCER LE RECHARGEMENT DE TOUS LES DROPDOWNS ---
+    async refreshAllDropdowns() {
+      await this.fetchDepartementsForDropdown();
+      await this.fetchActivitesForDropdown();
+      // Réinitialiser les listes dépendantes
+      this.filieres = [];
+      this.modules = [];
     },
 
     // --- CRUD Filières ---
     async createFiliere(data) {
       const response = await api.addFiliere(data);
       await this.fetchAdminAllFilieres(true); // Recharger la liste admin
+      // Recharger les filières si le département correspondant est sélectionné
+      if (data.departement_id && this.filieres.length > 0) {
+        await this.fetchFilieresByDepartement(data.departement_id);
+      }
       return response.data;
     },
     async updateFiliere(id, data) {
       const response = await api.updateFiliere(id, data);
       await this.fetchAdminAllFilieres(true);
+      // Recharger les filières pour les dropdowns
+      if (data.departement_id && this.filieres.length > 0) {
+        await this.fetchFilieresByDepartement(data.departement_id);
+      }
       return response.data;
     },
     async deleteFiliere(id) {
       await api.deleteFiliere(id);
       await this.fetchAdminAllFilieres(true);
+      // Si des filières sont affichées, les recharger
+      const deletedFiliere = this.adminFilieres.find(f => f.id === id);
+      if (deletedFiliere && this.filieres.length > 0) {
+        await this.fetchFilieresByDepartement(deletedFiliere.departement_id);
+      }
     },
 
     // --- CRUD Modules ---
     async createModule(data) {
       const response = await api.addModule(data);
       await this.fetchAdminAllModules(true); // Recharger la liste admin
+      // Recharger les modules si la filière correspondante est sélectionnée
+      if (data.filiere_id && this.modules.length > 0) {
+        await this.fetchModulesByFiliere(data.filiere_id);
+      }
       return response.data;
     },
     async updateModule(id, data) {
       const response = await api.updateModule(id, data);
       await this.fetchAdminAllModules(true);
+      // Recharger les modules pour les dropdowns
+      if (data.filiere_id && this.modules.length > 0) {
+        await this.fetchModulesByFiliere(data.filiere_id);
+      }
       return response.data;
     },
     async deleteModule(id) {
       await api.deleteModule(id);
       await this.fetchAdminAllModules(true);
+      // Si des modules sont affichés, les recharger
+      const deletedModule = this.adminModules.find(m => m.id === id);
+      if (deletedModule && this.modules.length > 0) {
+        await this.fetchModulesByFiliere(deletedModule.filiere_id);
+      }
     },
 
     // --- CRUD Activités ---
     async createActivite(data) {
       const response = await api.addActivite(data);
       await this.fetchAdminAllActivites(true); // Recharger la liste admin
+      await this.fetchActivitesForDropdown(); // IMPORTANT: Recharger aussi les dropdowns !
       return response.data;
     },
     async updateActivite(id, data) {
       const response = await api.updateActivite(id, data);
       await this.fetchAdminAllActivites(true);
+      await this.fetchActivitesForDropdown(); // IMPORTANT: Recharger aussi les dropdowns !
       return response.data;
     },
     async deleteActivite(id) {
       await api.deleteActivite(id);
       await this.fetchAdminAllActivites(true);
+      await this.fetchActivitesForDropdown(); // IMPORTANT: Recharger aussi les dropdowns !
     },
     // --- CRUD Utilisateurs (NOUVEAU) ---
     async fetchAdminAllUsers(force = false) {

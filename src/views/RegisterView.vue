@@ -13,17 +13,28 @@ import RegisterForm from '@/components/Auth/RegisterForm.vue';
 <style scoped>
 .register-container {
   max-width: 100%;
-  margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  background: transparent;
   text-align: center;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 h2 {
-  margin-bottom: 20px;
+  color: var(--text-primary);
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 p {
+  color: var(--text-muted);
+  font-style: italic;
+  font-weight: 500;
   margin-top: 20px;
 }
 </style>
